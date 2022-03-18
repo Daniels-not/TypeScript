@@ -6,8 +6,9 @@
 
 interface Magician {
     // attributes
-    firstName: string;
-    lastName: string;
+    firstName?: string; // optional property (?)
+    lastName?: string;
+    readonly magicType: string; // readonly property (readonly) - can't be changed
 }
 
 
@@ -27,7 +28,11 @@ let superPowers = {
 // use magic with the object superPowers can be used as a magician object
 
 function useMagic(magician: Magician):void {
-    console.log(`${magician.firstName} ${magician.lastName} is a magician and uses ${magician.magicType} magic.`);
+    if(magician.firstName) {
+        console.log(`${magician.firstName} ${magician.lastName} is a magician and uses ${magician.magicType} magic.`);
+    }else {
+        console.log(`No name is a magician and uses ${magician.magicType} magic.`);
+    }
 }
 
 console.log(useMagic(superPowers));
